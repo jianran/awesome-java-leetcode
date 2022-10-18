@@ -44,5 +44,39 @@ public class Solution {
         Solution solution = new Solution();
         int[] nums0 = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
         System.out.println(solution.maxSubArray(nums0));
+        System.out.println(solution.myMaxSubArray(nums0));
+        int[] nums1 = new int[]{2, 7, 9, 3, 1};
+        System.out.println(solution.maxSubArray(nums1));
+        System.out.println(solution.myMaxSubArray(nums1));
+        int[] nums2 = new int[]{-2, 11, -9, 3, 1};
+        System.out.println(solution.maxSubArray(nums2));
+        System.out.println(solution.myMaxSubArray(nums2));
+        int[] nums3 = new int[]{-2, 12, -9, 3, 1};
+        System.out.println(solution.maxSubArray(nums3));
+        System.out.println(solution.myMaxSubArray(nums3));
+    }
+
+    public int myMaxSubArray(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return Integer.MIN_VALUE;
+        }
+        int max = Integer.MIN_VALUE;
+        int[] f = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            if (i == 0) {
+                f[i] = nums[i];
+            } else {
+                if (f[i - 1] > 0) {
+                    f[i] = f[i-1] + nums[i];
+                } else {
+                    f[i] = nums[i];
+                }
+            }
+            if (max < f[i]) {
+                max = f[i];
+            }
+        }
+
+        return max;
     }
 }
