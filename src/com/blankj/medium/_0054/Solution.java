@@ -1,13 +1,12 @@
-import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-//        System.out.println(List.of(s.spiralTravel(new int[][]{{1, 2, 3}, {4, 5, 6}})));
+        System.out.println(List.of(s.spiralTravel(new int[][]{{1, 2, 3}, {4, 5, 6}})));
         System.out.println(List.of(s.spiralTravel(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}})));
-//        System.out.println(List.of(s.spiralTravel(new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}})));
+        System.out.println(List.of(s.spiralTravel(new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}})));
     }
 
     public Integer[] spiralTravel(int[][] numsArray) {
