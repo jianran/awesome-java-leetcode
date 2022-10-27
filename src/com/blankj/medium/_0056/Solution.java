@@ -2,9 +2,7 @@ package com.blankj.medium._056;
 
 import com.blankj.structure.Interval;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * <pre>
@@ -44,5 +42,35 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         Interval.print(solution.merge(Interval.createTestData("[1,3],[2,6],[8,10],[15,18]")));
+        Interval.print(solution.myMergeOverlap(Interval.createTestData("[1,3],[2,6],[8,10],[15,18]")));
+        Interval.print(solution.merge(Interval.createTestData("[1,3],[2,6],[8,15],[15,18]")));
+        Interval.print(solution.myMergeOverlap(Interval.createTestData("[1,3],[2,6],[8,15],[15,18]")));
+
+    }
+    public List<Interval> myMergeOverlap(List<Interval> intervals) {
+        if (intervals == null || intervals.size() == 0) {
+            return null;
+        }
+        Collections.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval o1, Interval o2) {
+                return o1.start - o2.start;
+            }
+        });
+        LinkedList<Interval> res = new LinkedList<>();
+        for (Interval interval : intervals) {
+            if (res.isEmpty()) {
+                res.add(interval);
+            } else {
+                Interval lastInterval = res.getLast();
+                if (lastInterval.end >= interval.start) {
+                    lastInterval.end = interval.end;
+                } else {
+                    res.add(interval);
+                }
+            }
+        }
+
+        return res;
     }
 }
