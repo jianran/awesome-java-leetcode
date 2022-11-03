@@ -5,6 +5,7 @@ public class Solution {
     public static void main(String[] args) {
         Solution s = new Solution();
         System.out.println(s.uniquePath(3, 2));
+        System.out.println(s.uniquePath(3, 3));
         System.out.println(s.uniquePath(7, 3));
     }
 
